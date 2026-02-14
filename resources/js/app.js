@@ -1,3 +1,7 @@
 import './bootstrap';
 
-document.getElementById('btn')?.addEventListener('click', () => alert('Работает!'));
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
