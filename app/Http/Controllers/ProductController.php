@@ -15,4 +15,11 @@ class ProductController extends Controller
         // Возвращаем вьюшку 'welcome' и передаем туда переменную $products
         return view('welcome', compact('products'));
     }
+
+    public function show(Product $product)
+    {
+        // Загружаем категорию, чтобы показать её на странице
+        $product->load('category');
+        return view('products.show', compact('product'));
+    }
 }

@@ -18,4 +18,8 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function likedByUsers()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }
