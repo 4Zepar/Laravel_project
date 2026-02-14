@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Category;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,11 +17,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+    // Создаем конкретные категории для реалистичности
+        $categories = ['Keyboards', 'Mice', 'Monitors', 'Headsets'];
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        foreach ($categories as $cat) {
+            // Создаем категорию
+            $category = Category::create([
+                'name' => $cat,
+                'slug' => strtolower($cat)
+            ]);
+
+            // Создаем 10 товаров для этой категории
+            Product::factory(10)->create([
+                'category_id' => $category->id
         ]);
+    }
     }
 }
