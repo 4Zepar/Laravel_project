@@ -7,18 +7,49 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-slate-900 text-white antialiased">
+    @if(session('success'))
+        <div id="flash-message" class="fixed top-4 right-4 z-50 bg-cyan-500 text-slate-900 px-6 py-3 rounded-2xl shadow-2xl font-bold transition-opacity duration-500">
+            {{ session('success') }}
+        </div>
+
+        <script>
+            setTimeout(() => {
+                const msg = document.getElementById('flash-message');
+                if (msg) {
+                    msg.style.opacity = '0'; // Делаем прозрачным
+                    setTimeout(() => msg.remove(), 500); // Удаляем из кода через 0.5 сек
+                }
+            }, 3000); // Висит 3 секунды
+        </script>
+    @endif
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         <header class="flex justify-between items-center mb-12">
             <h1 class="text-3xl font-bold tracking-tight text-cyan-400">TECH<span class="text-white">SHOP</span></h1>
-            <nav class="space-x-4">
+            
+            <nav class="flex items-center space-x-6">
+                <a href="{{ route('cart.index') }}" class="relative group p-2 bg-slate-800 rounded-xl border border-slate-700 hover:border-cyan-500 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white group-hover:text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    
+                    @if(session('cart') && count(session('cart')) > 0)
+                        <span class="absolute -top-2 -right-2 bg-cyan-500 text-slate-900 text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-slate-900">
+                            {{ count(session('cart')) }}
+                        </span>
+                    @endif
+                </a>
+
                 @if (Route::has('login'))
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm border border-cyan-500 px-4 py-2 rounded-lg hover:bg-cyan-500 transition">Кабинет</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm hover:text-cyan-400">Войти</a>
-                        <a href="{{ route('register') }}" class="text-sm bg-cyan-600 px-4 py-2 rounded-lg hover:bg-cyan-500 transition">Регистрация</a>
-                    @endauth
+                    <div class="space-x-4">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="text-sm border border-cyan-500 px-4 py-2 rounded-lg hover:bg-cyan-500 transition">Кабинет</a>
+                        @else
+                            <a href="{{ route('login') }}" class="text-sm hover:text-cyan-400">Войти</a>
+                            <a href="{{ route('register') }}" class="text-sm bg-cyan-600 px-4 py-2 rounded-lg hover:bg-cyan-500 transition shadow-lg shadow-cyan-900/20">Регистрация</a>
+                        @endauth
+                    </div>
                 @endif
             </nav>
         </header>
@@ -50,11 +81,14 @@
                                         </svg>
                                     </button>
                                 </form>
-                                <button class="bg-cyan-600 hover:bg-cyan-500 p-2 rounded-xl transition">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                </button>
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="bg-cyan-600 hover:bg-cyan-500 p-2 rounded-xl transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
