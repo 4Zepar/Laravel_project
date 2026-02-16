@@ -13,6 +13,10 @@ class Product extends Model
 
     protected $fillable = ['name', 'description', 'price', 'image', 'category_id'];
 
+    protected $casts = [
+        'specs' => 'array', 
+    ];
+
     // Товар принадлежит категории
     public function category()
     {

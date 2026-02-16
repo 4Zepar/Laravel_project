@@ -40,6 +40,8 @@
                 <p class="text-slate-400 text-lg mb-8 leading-relaxed border-l-4 border-slate-600 pl-4">
                     {{ $product->description }}
                 </p>
+
+                {{-- Блок характеристик --}}
                 
                 <div class="mt-auto pt-8 border-t border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div class="text-center sm:text-left">
@@ -53,6 +55,30 @@
                 </div>
             </div>
         </div>
+        
+        @if(!empty($product->specs))
+            <div class="mt-8 border-t border-slate-700 pt-8  p-8 rounded-3xl border shadow-2xl">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Технические характеристики
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4">
+                    @foreach($product->specs as $key => $value)
+                        <div class="flex justify-between items-center py-3 border-b border-slate-800 hover:bg-slate-800/50 px-3 rounded-lg transition-colors group">
+                            <span class="text-slate-400 font-medium group-hover:text-slate-300 transition-colors">
+                                {{ $key }}
+                            </span>
+                            <span class="text-cyan-400 font-bold text-right group-hover:text-cyan-300 transition-colors shadow-cyan-500/10">
+                                {{ $value }}
+                            </span>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
 
         <livewire:product-comments :productId="$product->id" />
     </div>
