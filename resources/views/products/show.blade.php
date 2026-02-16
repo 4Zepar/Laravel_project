@@ -53,6 +53,8 @@
                 </div>
             </div>
         </div>
+
+        <livewire:product-comments :productId="$product->id" />
     </div>
 </body>
 </html>
