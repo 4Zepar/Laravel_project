@@ -20,14 +20,14 @@ class ProductSpecsSeeder extends Seeder
         // Массивы проверенных ссылок на игровые девайсы (Unsplash/Pexels)
         $images = [
             'Mice' => [
-                'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800',
+                'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800',
                 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800',
                 'https://images.unsplash.com/photo-1563297007-0686b7003af7?w=800',
             ],
             'Keyboards' => [
-                'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=800',
-                'https://images.unsplash.com/photo-1595225476474-87563907a212?w=800',
-                'https://images.unsplash.com/photo-1618384881928-df99860b298c?w=800',
+                'https://images.unsplash.com/photo-1598662779094-110c2bad80b5?q=80&w=1246&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://plus.unsplash.com/premium_photo-1679177183572-a4056053b8a2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGtleWJvYXJkfGVufDB8fDB8fHww',
+                'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             ],
             'Headsets' => [
                 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800',

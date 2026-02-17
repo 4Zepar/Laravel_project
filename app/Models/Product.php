@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 class Product extends Model
@@ -11,12 +12,17 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'image', 'category_id'];
+    protected $fillable = ['name', 'description', 'price', 'image', 'category_id', 'specs'];
 
     protected $casts = [
         'specs' => 'array', 
     ];
 
+    public function likedUsers(): BelongsToMany
+    {
+        // Убедитесь, что название таблицы 'product_user' совпадает с вашей миграцией
+        return $this->belongsToMany(User::class, 'product_user');
+    }
     // Товар принадлежит категории
     public function category()
     {

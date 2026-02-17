@@ -29,7 +29,7 @@ new class extends Component
     public function toggleLike()
     {
         if (!Auth::check()) {
-            return $this->redirect(route('login'), navigate: true);
+            return redirect()->route('login');
         }
 
         $user = Auth::user();
