@@ -1,8 +1,6 @@
 <x-app-layout>
-    {{-- Удаляем слот "header", так как наш новый Livewire Header берет на себя роль навигации --}}
     
     <div class="min-h-screen bg-slate-900">
-        {{-- Вставляем твой выбранный хедер --}}
         <livewire:header />
 
         <div class="py-6">
@@ -11,9 +9,9 @@
                     <div class="p-8">
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                             
-                            {{-- Инфо о пользователе --}}
+                            
                             <div class="flex items-center gap-6">
-                                {{-- Заглушка под аватар --}}
+                                
                                 <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-3xl ">
                                     {{ Str::upper(Str::substr(Auth::user()->name, 0, 1)) }}
                                 </div>
@@ -35,7 +33,7 @@
                                             </svg>
                                             На сайте с {{ Auth::user()->created_at->format('d.m.Y') }}
                                         </span>
-                                        {{-- Пример доп. параметров (если добавишь в миграцию) --}}
+                                        
                                         @if(isset(Auth::user()->phone))
                                             <span class="flex items-center gap-1.5 text-slate-400">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -48,7 +46,7 @@
                                 </div>
                             </div>
 
-                            {{-- Кнопка Настроек --}}
+                            
                             <div class="shrink-0">
                                 <a href="{{ route('profile.edit') }}" wire:navigate class="flex items-center justify-center gap-2 px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-2xl transition-all border border-slate-600 group">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400 group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -63,7 +61,7 @@
                     </div>
                 </div>
 
-                {{-- Секция лайков в стиле твоего магазина --}}
+                
                 <div class="mt-12">
                     <div class="flex items-center justify-between mb-8">
                         <h2 class="text-3xl font-bold text-white tracking-tight">

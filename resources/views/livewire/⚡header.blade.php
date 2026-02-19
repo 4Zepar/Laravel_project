@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Session;
 
 new class extends Component
 {
-    /**
-     * Метод для выхода из системы
-     */
     public function logout()
     {
         Auth::guard('web')->logout();
@@ -16,7 +13,6 @@ new class extends Component
         Session::invalidate();
         Session::regenerateToken();
 
-        // Важно: используем обычный редирект для полного сброса состояния
         return redirect()->to('/');
     }
 };

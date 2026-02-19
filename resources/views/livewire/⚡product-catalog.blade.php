@@ -24,14 +24,12 @@ new class extends Component
     public $sortField = 'created_at';
     public $sortDirection = 'desc';
 
-    // Исправлено: метод для прослушивания события лайка без лишних параметров
     #[On('like-toggled')]
     public function refreshCatalog()
     {
-        // Просто вызываем перерендеринг
+
     }
 
-    // Исправлено: добавлен параметр по умолчанию для предотвращения BindingResolutionException
     public function toggleCategory($categoryId = null)
     {
         if ($this->selectedCategory == $categoryId) {
@@ -115,11 +113,10 @@ new class extends Component
 };
 ?>
 
-{{-- Добавлены паддинги px-4 sm:px-6 lg:px-8 --}}
+
 <div class="py-8 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col lg:flex-row gap-8">
-        
-        {{-- САЙДБАР --}}
+    
         <aside class="w-full lg:w-1/5 space-y-6 flex-shrink-0">
             
             @if($selectedCategory || $showLikedOnly || !empty($filterSpecs))
@@ -166,8 +163,7 @@ new class extends Component
                 </div>
             </div>
 
-            {{-- БЛОК ЦЕНЫ --}}
-{{-- БЛОК ЦЕНЫ --}}
+
 <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
     <h3 class="text-white font-bold mb-4">Цена (₽)</h3>
     
@@ -180,7 +176,6 @@ new class extends Component
         >
         <span class="text-slate-500">-</span>
         
-        {{-- Добавили id и убрали debounce для синхронизации --}}
         <input 
             wire:model.live="priceMax" 
             type="number" 
@@ -190,7 +185,6 @@ new class extends Component
     </div>
 
     <div class="relative pt-1">
-        {{-- МАГИЯ ЗДЕСЬ: oninput принудительно меняет значение в текстовом инпуте прямо в браузере --}}
         <input 
             type="range" 
             wire:model.live="priceMax" 
@@ -227,7 +221,6 @@ new class extends Component
             @endif
         </aside>
 
-        {{-- СЕТКА ТОВАРОВ --}}
         <main class="w-full lg:w-3/4">
             <div class="flex flex-wrap gap-4 justify-between items-center mb-6 bg-slate-800 p-4 rounded-2xl border border-slate-700 shadow-lg">
                 <span class="text-slate-400 text-sm">Найдено: <span class="text-white font-bold">{{ $this->products->total() }}</span></span>

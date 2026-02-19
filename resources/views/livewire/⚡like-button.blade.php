@@ -15,7 +15,6 @@ new class extends Component
         $this->updateLikeStatus();
     }
 
-    // Метод для синхронизации статуса
     public function updateLikeStatus()
     {
         if (!Auth::check()) {

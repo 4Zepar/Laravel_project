@@ -73,7 +73,6 @@ new class extends Component
     </div>
 
     @if($this->cartItem)
-        {{-- Уменьшенная панель +/- --}}
         <div class="flex items-center bg-slate-700/80 rounded-lg p-0.5 border border-cyan-500/30 shadow-md">
             <button 
                 wire:click.stop="remove" 
@@ -92,7 +91,6 @@ new class extends Component
             >+</button>
         </div>
     @else
-        {{-- Уменьшенная кнопка "Купить" --}}
         <button 
             wire:click.stop="add" 
             wire:loading.attr="disabled" 

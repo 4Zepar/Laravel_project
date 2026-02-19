@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    // Показать корзину
+
     public function index()
     {
         $cart = session()->get('cart', []);
@@ -18,7 +18,6 @@ class CartController extends Controller
         return view('cart.index', compact('cart', 'total'));
     }
 
-    // Добавить товар
     public function add(Product $product)
     {
         $cart = session()->get('cart', []);

@@ -17,8 +17,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => ucfirst($this->faker->word()), // Случайное слово
-            'slug' => $this->faker->slug(),          // slug-url
+            'name' => ucfirst($this->faker->word()),
+            'slug' => $this->faker->slug(),         
         ];
     }
 }

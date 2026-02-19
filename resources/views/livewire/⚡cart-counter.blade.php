@@ -1,12 +1,10 @@
 <?php
 
-use Livewire\Component; // Используем Volt-версию, раз у тебя анонимные классы
+use Livewire\Component; 
 use Livewire\Attributes\On; 
 
 new class extends Component
 {
-    // Этот атрибут заставляет компонент перерисоваться, 
-    // когда где-то срабатывает $this->dispatch('cart-updated')
     #[On('cart-updated')]
     public function updateCounter()
     {

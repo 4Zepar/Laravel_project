@@ -17,7 +17,6 @@ class ProductSpecsSeeder extends Seeder
 
         $categories = Category::all();
 
-        // Массивы проверенных ссылок на игровые девайсы (Unsplash/Pexels)
         $images = [
             'Mice' => [
                 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800',
@@ -44,13 +43,11 @@ class ProductSpecsSeeder extends Seeder
         foreach ($categories as $category) {
             for ($i = 1; $i <= 3; $i++) {
                 
-                // Берем рандомную картинку из массива категории или общую, если категории нет
                 $categoryName = $category->name;
                 $imageUrl = isset($images[$categoryName]) 
                     ? fake()->randomElement($images[$categoryName]) 
                     : 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800';
 
-                // Твои характеристики (оставляем без изменений)
                 $specs = match($categoryName) {
                     'Mice' => [
                         'DPI' => rand(800, 25000),

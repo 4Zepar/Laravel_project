@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Название категории (напр. "Клавиатуры")
-            $table->string('slug')->unique(); // URL (напр. "keyboards"
+            $table->string('name'); 
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

@@ -17,18 +17,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-    // Создаем конкретные категории для реалистичности
         $categories = ['Keyboards', 'Mice', 'Monitors', 'Headsets'];
 
         foreach ($categories as $cat) {
-            // Создаем категорию
             $category = Category::create([
                 'name' => $cat,
                 'slug' => strtolower($cat)
             ]);
 
-            // Создаем 10 товаров для этой категории
-            Product::factory(10)->create([
+            Product::factory(5)->create([
                 'category_id' => $category->id
         ]);
     }

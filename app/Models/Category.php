@@ -11,7 +11,6 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug'];
 
-    // Одна категория имеет много товаров
     public function products()
     {
         return $this->hasMany(Product::class);

@@ -20,10 +20,9 @@ class Product extends Model
 
     public function likedUsers(): BelongsToMany
     {
-        // Убедитесь, что название таблицы 'product_user' совпадает с вашей миграцией
         return $this->belongsToMany(User::class, 'product_user');
     }
-    // Товар принадлежит категории
+    
     public function category()
     {
         return $this->belongsTo(Category::class);

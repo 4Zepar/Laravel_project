@@ -12,9 +12,8 @@ class LikeController extends Controller
     {
         $user = Auth::user();
         
-        // Метод toggle() сам добавит или удалит запись в таблице product_user
         $user->likedProducts()->toggle($product->id);
 
-        return back(); // Возвращаем пользователя туда, откуда он пришел
+        return back(); 
     }
 }

@@ -23,7 +23,6 @@ new class extends Component
 ?>
 
 <div class="min-h-screen bg-slate-900">
-    {{-- Наш новый универсальный хедер --}}
     <livewire:header />
 
     <div class="max-w-5xl mx-auto px-4 py-12">
