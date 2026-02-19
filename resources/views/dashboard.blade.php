@@ -60,7 +60,6 @@
                         </div>
                     </div>
                 </div>
-
                 
                 <div class="mt-12">
                     <div class="flex items-center justify-between mb-8">
@@ -105,6 +104,9 @@
                         </div>
                     @endif
                 </div>
+
+                <livewire:order-history />
+                
             </div>
         </div>
     </div>

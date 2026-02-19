@@ -48,7 +48,6 @@ new class extends Component
         $this->replyingTo = null;
     }
 
-    // Получаем только основные комментарии (без родителя)
     public function getCommentsProperty()
     {
         return Comment::where('product_id', $this->productId)
