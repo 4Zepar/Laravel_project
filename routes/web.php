@@ -6,6 +6,13 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CartController;
 
+Route::get('/admin', function () {
+    if (auth()->user()->is_admin !== 1) {
+        abort(403, 'У вас нет прав доступа');
+    }
+
+    return view('admin-panel');
+})->middleware(['auth'])->name('admin');
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');

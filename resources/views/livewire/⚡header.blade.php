@@ -31,6 +31,14 @@ new class extends Component
 
             <nav class="flex items-center gap-6">
                 
+
+            {{-- Ссылка на админку для авторизованных --}}
+                @auth
+                    <a href="{{ url('/admin') }}" wire:navigate class="text-xs font-bold text-amber-500 border border-amber-500/30 px-3 py-1 rounded-full hover:bg-amber-500 hover:text-white transition-all mr-2">
+                        Админ
+                    </a>
+                @endauth
+
                 <a href="/" wire:navigate class="hidden md:block text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">
                     Каталог
                 </a>
